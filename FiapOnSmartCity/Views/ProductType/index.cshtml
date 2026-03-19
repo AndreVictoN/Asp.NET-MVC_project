@@ -1,0 +1,49 @@
+@model IEnumerable<FiapOnSmartCity.Models.ProductType>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Product Type Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Type</title>
+</head>
+<body>
+    <h1>Product Type</h1>
+    <p>
+        @Html.ActionLink("Create New", "Create", "ProductType")
+    </p>
+    <table class="table" border="1">
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><label>@item.id</label></td>
+                <td><label>@item.description</label></td>
+                <td>
+                    @Html.ActionLink("Edit", "Update", "ProductType", new { id = item.id })
+                    @Html.ActionLink("Details", "Details", "ProductType", new { id = item.id })
+                    
+                    @using (Html.BeginForm("Delete", "ProductType", new { id = item.id }, FormMethod.Post, null, new { style = "display:inline;" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <button type="submit" style="background:none; border:none; color:red; cursor:pointer; text-decoration:underline; padding:0;">
+                            Delete
+                        </button>
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

@@ -1,0 +1,34 @@
+@model FiapOnSmartCity.Models.ProductType
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Create Product Type";
+}
+
+<h1>Product Type - Create</h1>
+@using (Html.BeginForm("Create", "ProductType"))
+{
+    <div class="form-horizontal col-sm-6">
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.description, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(m => m.description)
+            @Html.ValidationMessageFor(m => m.description, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label>Comercialized</label>
+            <div class="checkbox">
+                @Html.CheckBoxFor(m => m.isComercialized)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="reset" value="Clear" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

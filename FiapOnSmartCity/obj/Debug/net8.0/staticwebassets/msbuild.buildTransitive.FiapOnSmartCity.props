@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/FiapOnSmartCity.props" />
+</Project>
